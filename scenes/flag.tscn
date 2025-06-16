@@ -1,0 +1,88 @@
+[gd_scene load_steps=20 format=3 uid="uid://ddhnd6bnepxki"]
+
+[ext_resource type="Texture2D" uid="uid://d3rvd7ot554cl" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 01.png" id="1_df0v8"]
+[ext_resource type="Texture2D" uid="uid://corx6r1ep8pbj" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 02.png" id="2_mir1r"]
+[ext_resource type="Texture2D" uid="uid://bhnueb3jpaqrj" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 03.png" id="3_aofb0"]
+[ext_resource type="Texture2D" uid="uid://bpyuemijq1enm" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 04.png" id="4_suq27"]
+[ext_resource type="Texture2D" uid="uid://bgwkiaqp58h2l" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 05.png" id="5_s6cpg"]
+[ext_resource type="Texture2D" uid="uid://caffybawilvtc" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 06.png" id="6_qfyfp"]
+[ext_resource type="Texture2D" uid="uid://cbac3vcsgj006" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 07.png" id="7_py37q"]
+[ext_resource type="Texture2D" uid="uid://df44j54bvxl3u" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 08.png" id="8_4r2ai"]
+[ext_resource type="Texture2D" uid="uid://dcbuqd6g6mwm4" path="res://Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 09.png" id="9_d3nnp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4r82"]
+atlas = ExtResource("1_df0v8")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfq71"]
+atlas = ExtResource("2_mir1r")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gu3a"]
+atlas = ExtResource("3_aofb0")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jlf1"]
+atlas = ExtResource("4_suq27")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgrmx"]
+atlas = ExtResource("5_s6cpg")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq2p3"]
+atlas = ExtResource("6_qfyfp")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6smx3"]
+atlas = ExtResource("7_py37q")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwfig"]
+atlas = ExtResource("8_4r2ai")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwhpl"]
+atlas = ExtResource("9_d3nnp")
+region = Rect2(0, 0, 34, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5o37x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4r82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfq71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gu3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jlf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgrmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq2p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6smx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwfig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwhpl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Flag" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5o37x")
+autoplay = "default"

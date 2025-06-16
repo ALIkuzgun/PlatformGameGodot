@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dntf10r010kwj"]
+
+[ext_resource type="Script" uid="uid://cwodqacarnkff" path="res://scenes/killplayer.gd" id="1_0vh0m"]
+
+[node name="Killplayer" type="Area2D"]
+script = ExtResource("1_0vh0m")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

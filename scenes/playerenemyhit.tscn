@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5m8vn8kbq51i"]
+
+[ext_resource type="Script" uid="uid://d3xrxn5salm8u" path="res://scenes/playerenemyhit.gd" id="1_5ekj4"]
+[ext_resource type="AudioStream" uid="uid://c2hrnwihrpqnw" path="res://Treasure Hunters/damage.wav" id="2_oj4x1"]
+
+[node name="Playerenemyhit" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_5ekj4")
+
+[node name="Damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_oj4x1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

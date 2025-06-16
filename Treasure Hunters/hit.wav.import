@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://citcr28pr6qvo"
+path="res://.godot/imported/hit.wav-451ed03ec5e861b1d2f836e9ae7f1d70.sample"
+
+[deps]
+
+source_file="res://Treasure Hunters/hit.wav"
+dest_files=["res://.godot/imported/hit.wav-451ed03ec5e861b1d2f836e9ae7f1d70.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

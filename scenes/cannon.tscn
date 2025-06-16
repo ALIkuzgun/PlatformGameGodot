@@ -1,0 +1,74 @@
+[gd_scene load_steps=15 format=3 uid="uid://cj0uuv8dw2wyc"]
+
+[ext_resource type="Script" uid="uid://wdbj7w2psii3" path="res://scenes/cannon.gd" id="1_pxhkx"]
+[ext_resource type="Texture2D" uid="uid://7n8dt6l2kylg" path="res://Treasure Hunters/Shooter Traps/Sprites/Cannon/Cannon Fire/6.png" id="2_yjxeu"]
+[ext_resource type="Texture2D" uid="uid://bll1aeonuxngm" path="res://Treasure Hunters/Shooter Traps/Sprites/Cannon/Cannon Fire/1.png" id="3_8ssa1"]
+[ext_resource type="Texture2D" uid="uid://da1vqsbmgm5mu" path="res://Treasure Hunters/Shooter Traps/Sprites/Cannon/Cannon Fire/2.png" id="4_5saov"]
+[ext_resource type="Texture2D" uid="uid://bqf4vrx6aoiqn" path="res://Treasure Hunters/Shooter Traps/Sprites/Cannon/Cannon Fire/3.png" id="5_uvlre"]
+[ext_resource type="Texture2D" uid="uid://cfcjlb7q5pvsx" path="res://Treasure Hunters/Shooter Traps/Sprites/Cannon/Cannon Fire/4.png" id="6_ogt75"]
+[ext_resource type="Texture2D" uid="uid://b7ch4iwecaw03" path="res://Treasure Hunters/Shooter Traps/Sprites/Cannon/Cannon Fire/5.png" id="7_4a4je"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ediu4"]
+atlas = ExtResource("3_8ssa1")
+region = Rect2(0, 0, 40, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vda2x"]
+atlas = ExtResource("4_5saov")
+region = Rect2(0, 0, 40, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2udb"]
+atlas = ExtResource("5_uvlre")
+region = Rect2(0, 0, 40, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01vp4"]
+atlas = ExtResource("6_ogt75")
+region = Rect2(0, 0, 40, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr4va"]
+atlas = ExtResource("7_4a4je")
+region = Rect2(0, 0, 40, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3p7l"]
+atlas = ExtResource("2_yjxeu")
+region = Rect2(0, 0, 40, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swbd8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ediu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vda2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2udb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01vp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr4va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3p7l")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="Cannon" type="Node2D"]
+script = ExtResource("1_pxhkx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_swbd8")
+animation = &"shoot"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

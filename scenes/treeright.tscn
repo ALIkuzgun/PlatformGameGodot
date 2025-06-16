@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4jomryw64jtx"]
+
+[ext_resource type="Texture2D" uid="uid://cgokwid4s7y65" path="res://Treasure Hunters/Palm Tree Island/Sprites/Back Palm Trees/Back Palm Tree Left 01.png" id="1_0op7c"]
+[ext_resource type="Texture2D" uid="uid://bus58ppear0we" path="res://Treasure Hunters/Palm Tree Island/Sprites/Back Palm Trees/Back Palm Tree Left 02.png" id="2_w3t73"]
+[ext_resource type="Texture2D" uid="uid://b4w43c2j1xl5h" path="res://Treasure Hunters/Palm Tree Island/Sprites/Back Palm Trees/Back Palm Tree Left 03.png" id="3_y5iox"]
+[ext_resource type="Texture2D" uid="uid://b3afc5tyh22xu" path="res://Treasure Hunters/Palm Tree Island/Sprites/Back Palm Trees/Back Palm Tree Left 04.png" id="4_gmiry"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j444y"]
+atlas = ExtResource("1_0op7c")
+region = Rect2(0, 0, 51, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fidus"]
+atlas = ExtResource("2_w3t73")
+region = Rect2(0, 0, 51, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu7sa"]
+atlas = ExtResource("3_y5iox")
+region = Rect2(0, 0, 51, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxqd4"]
+atlas = ExtResource("4_gmiry")
+region = Rect2(0, 0, 51, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkltx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j444y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fidus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu7sa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxqd4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsxtt"]
+size = Vector2(34, 8.5)
+
+[node name="Treeright" type="AnimatableBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jkltx")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, -22.25)
+shape = SubResource("RectangleShape2D_hsxtt")
+one_way_collision = true

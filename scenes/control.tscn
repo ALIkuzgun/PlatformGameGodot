@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwq4w14t550a"]
+
+[ext_resource type="Script" uid="uid://cur4yqdrbm7bi" path="res://scenes/control.gd" id="1_r67kn"]
+[ext_resource type="Texture2D" uid="uid://clomulsbunmjr" path="res://Treasure Hunters/Ekran görüntüsü 2025-06-13 104946.png" id="2_8n18e"]
+[ext_resource type="FontFile" uid="uid://n80d1k2ito3e" path="res://Treasure Hunters/PixelOperator8.ttf" id="2_brbbq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 491.0
+offset_top = 286.0
+offset_right = 592.0
+offset_bottom = 378.0
+script = ExtResource("1_r67kn")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(111.532, 32.5)
+scale = Vector2(1.05225, 1.14164)
+texture = ExtResource("2_8n18e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -8.0
+offset_right = 203.0
+offset_bottom = 194.0
+theme_override_constants/separation = 15
+
+[node name="Button1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_brbbq")
+theme_override_font_sizes/font_size = 32
+text = "Oyna"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_brbbq")
+theme_override_font_sizes/font_size = 32
+text = "Ayarlar"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_brbbq")
+theme_override_font_sizes/font_size = 32
+text = "Çıkış"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = -206.0
+offset_top = -189.0
+offset_right = 389.0
+offset_bottom = -134.0
+theme_override_fonts/font = ExtResource("2_brbbq")
+theme_override_font_sizes/font_size = 54
+text = "Platform Game"
+
+[connection signal="pressed" from="VBoxContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

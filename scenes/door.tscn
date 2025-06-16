@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj3fxtewpnahe"]
+
+[ext_resource type="Texture2D" uid="uid://b3q02pc8362gu" path="res://Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Opening/01.png" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://x1a42n78q3lv" path="res://scenes/door.gd" id="1_uvdjg"]
+[ext_resource type="Texture2D" uid="uid://12nqww7vjpkh" path="res://Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Opening/05.png" id="2_uvdjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la1wf"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_18pbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la1wf")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uvdjg"]
+radius = 20.0
+height = 50.0
+
+[node name="Door" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_uvdjg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_18pbm")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_uvdjg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

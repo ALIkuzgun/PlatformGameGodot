@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bro7t88ogtetm"]
+
+[ext_resource type="Texture2D" uid="uid://djlr7m1jflnb8" path="res://Treasure Hunters/Shooter Traps/Sprites/Cannon/Cannon Ball Idle/1.png" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://btwgayjr7h221" path="res://scenes/bullet.gd" id="1_y25gk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
+radius = 8.0
+
+[node name="Bullet" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_y25gk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mkf8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_y25gk")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

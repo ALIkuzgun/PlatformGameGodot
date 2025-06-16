@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj0uuv8dw2wyc"]
+
+[ext_resource type="Script" uid="uid://dlcoalommr1nd" path="res://scenes/cannon.gd" id="1_pxhkx"]
+[ext_resource type="Texture2D" uid="uid://7n8dt6l2kylg" path="res://Treasure Hunters/Shooter Traps/Sprites/Cannon/Cannon Fire/6.png" id="2_yjxeu"]
+
+[node name="Cannon" type="Node2D"]
+script = ExtResource("1_pxhkx")
+
+[node name="Cannonspirte" type="Sprite2D" parent="."]
+texture = ExtResource("2_yjxeu")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

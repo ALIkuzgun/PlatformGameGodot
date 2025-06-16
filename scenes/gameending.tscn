@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://m46ni82x7ie6"]
+
+[ext_resource type="FontFile" uid="uid://n80d1k2ito3e" path="res://Treasure Hunters/PixelOperator8.ttf" id="1_qlsjc"]
+[ext_resource type="Script" uid="uid://3q5gi3phgrw6" path="res://scenes/gameending.gd" id="1_spigh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spigh"]
+bg_color = Color(0.630258, 0.596772, 0.532739, 1)
+
+[node name="Gameending" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_spigh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 87.0
+offset_right = 788.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qlsjc")
+theme_override_font_sizes/font_size = 55
+text = "
+Game Over"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 336.0
+offset_right = 1022.0
+offset_bottom = 376.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qlsjc")
+theme_override_font_sizes/font_size = 40
+text = " Thanks for playing the game"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 469.0
+offset_right = 649.0
+offset_bottom = 540.0
+theme_override_fonts/font = ExtResource("1_qlsjc")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxFlat_spigh")
+text = "Quit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

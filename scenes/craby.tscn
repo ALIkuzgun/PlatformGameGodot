@@ -1,0 +1,109 @@
+[gd_scene load_steps=21 format=3 uid="uid://b0cnxeu0nhi1m"]
+
+[ext_resource type="Texture2D" uid="uid://c4fvftikl3vl4" path="res://Treasure Hunters/The Crusty Crew/Sprites/Crabby/02-Run/Run 01.png" id="1_a4p8b"]
+[ext_resource type="Script" uid="uid://c8e64yi7lckml" path="res://scenes/craby.gd" id="1_lywi5"]
+[ext_resource type="Texture2D" uid="uid://c4d7kkip1mag4" path="res://Treasure Hunters/The Crusty Crew/Sprites/Crabby/02-Run/Run 02.png" id="2_lywi5"]
+[ext_resource type="Texture2D" uid="uid://yje1ngwnx57i" path="res://Treasure Hunters/The Crusty Crew/Sprites/Crabby/02-Run/Run 03.png" id="3_jn51k"]
+[ext_resource type="Texture2D" uid="uid://bp3sfn3q0pwel" path="res://Treasure Hunters/The Crusty Crew/Sprites/Crabby/02-Run/Run 04.png" id="4_gf5lr"]
+[ext_resource type="Texture2D" uid="uid://c120wu1005dyy" path="res://Treasure Hunters/The Crusty Crew/Sprites/Crabby/02-Run/Run 05.png" id="5_8jnr6"]
+[ext_resource type="Texture2D" uid="uid://bygngcs7hoqi4" path="res://Treasure Hunters/The Crusty Crew/Sprites/Crabby/02-Run/Run 06.png" id="6_iiknd"]
+[ext_resource type="PackedScene" uid="uid://b5m8vn8kbq51i" path="res://scenes/playerenemyhit.tscn" id="8_lywi5"]
+[ext_resource type="AudioStream" uid="uid://citcr28pr6qvo" path="res://Treasure Hunters/hit.wav" id="9_jn51k"]
+[ext_resource type="AudioStream" uid="uid://c2hrnwihrpqnw" path="res://Treasure Hunters/damage.wav" id="10_gf5lr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p284l"]
+atlas = ExtResource("1_a4p8b")
+region = Rect2(0, 0, 72, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk165"]
+atlas = ExtResource("2_lywi5")
+region = Rect2(0, 0, 72, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov2t1"]
+atlas = ExtResource("3_jn51k")
+region = Rect2(0, 0, 72, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e06wd"]
+atlas = ExtResource("4_gf5lr")
+region = Rect2(0, 0, 72, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_563ri"]
+atlas = ExtResource("5_8jnr6")
+region = Rect2(0, 0, 72, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttarb"]
+atlas = ExtResource("6_iiknd")
+region = Rect2(0, 0, 72, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvuoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p284l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk165")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov2t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e06wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_563ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttarb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn51k"]
+size = Vector2(35, 18)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lywi5"]
+bg_color = Color(0.66584, 0.0933324, 0.160362, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn51k"]
+bg_color = Color(0.790198, 0.536081, 0.314873, 1)
+
+[node name="Craby" type="Node2D"]
+script = ExtResource("1_lywi5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jvuoc")
+animation = &"run"
+autoplay = "run"
+
+[node name="Playerenemyhit" parent="." instance=ExtResource("8_lywi5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Playerenemyhit"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_jn51k")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(23, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(-20, 0)
+
+[node name="Crabyhealth" type="ProgressBar" parent="."]
+offset_left = -17.0
+offset_top = -17.0
+offset_right = 17.0
+offset_bottom = -14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lywi5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jn51k")
+value = 100.0
+show_percentage = false
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-5, -1)
+stream = ExtResource("9_jn51k")
+
+[node name="Damage" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, 0)
+stream = ExtResource("10_gf5lr")

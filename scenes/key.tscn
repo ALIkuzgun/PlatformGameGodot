@@ -1,0 +1,101 @@
+[gd_scene load_steps=21 format=3 uid="uid://de6sco3sspfb"]
+
+[ext_resource type="Texture2D" uid="uid://dokcmxxcxh78n" path="res://Treasure Hunters/Merchant Ship/Sprites/Chest Key/Idle/1.png" id="1_ljj5h"]
+[ext_resource type="Script" uid="uid://c8nyibbwhm4at" path="res://scenes/key.gd" id="1_upbuq"]
+[ext_resource type="Texture2D" uid="uid://crmxaoqrumv5k" path="res://Treasure Hunters/Merchant Ship/Sprites/Chest Key/Idle/2.png" id="2_upbuq"]
+[ext_resource type="Texture2D" uid="uid://b1hjm2lhl28nv" path="res://Treasure Hunters/Merchant Ship/Sprites/Chest Key/Idle/3.png" id="3_8cac7"]
+[ext_resource type="Texture2D" uid="uid://cum4vpt3046mu" path="res://Treasure Hunters/Merchant Ship/Sprites/Chest Key/Idle/4.png" id="4_gq3hl"]
+[ext_resource type="Texture2D" uid="uid://bxodnldk5h308" path="res://Treasure Hunters/Merchant Ship/Sprites/Chest Key/Idle/5.png" id="5_ku6d0"]
+[ext_resource type="Texture2D" uid="uid://b2xrskwswla45" path="res://Treasure Hunters/Merchant Ship/Sprites/Chest Key/Idle/6.png" id="6_1w6cg"]
+[ext_resource type="Texture2D" uid="uid://cf8iww5gros2f" path="res://Treasure Hunters/Merchant Ship/Sprites/Chest Key/Idle/7.png" id="7_fcqyd"]
+[ext_resource type="Texture2D" uid="uid://dkwjfyerdn3wb" path="res://Treasure Hunters/Merchant Ship/Sprites/Chest Key/Idle/8.png" id="8_midqh"]
+[ext_resource type="AudioStream" uid="uid://bl75vjtg2b2w7" path="res://Treasure Hunters/retro-coin-4-236671.mp3" id="10_8cac7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu8ts"]
+atlas = ExtResource("1_ljj5h")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oglw"]
+atlas = ExtResource("2_upbuq")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plm0p"]
+atlas = ExtResource("3_8cac7")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11q70"]
+atlas = ExtResource("4_gq3hl")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrs3s"]
+atlas = ExtResource("5_ku6d0")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqh0b"]
+atlas = ExtResource("6_1w6cg")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw5uf"]
+atlas = ExtResource("7_fcqyd")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obeno"]
+atlas = ExtResource("8_midqh")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udwwn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu8ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oglw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plm0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11q70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrs3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqh0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw5uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obeno")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmwd0"]
+radius = 5.0
+height = 18.0
+
+[node name="Key" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_upbuq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_udwwn")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bmwd0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_8cac7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhoe6aqdas5bl"]
+
+[ext_resource type="Script" uid="uid://e242gys4tpoq" path="res://scenes/coin.gd" id="1_1ikuy"]
+[ext_resource type="Texture2D" uid="uid://dmamc2pp3y4of" path="res://Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/01.png" id="1_d14el"]
+[ext_resource type="Texture2D" uid="uid://dm03jw5hyjwbj" path="res://Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/02.png" id="2_1ikuy"]
+[ext_resource type="Texture2D" uid="uid://m2j2kjs7phe4" path="res://Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/03.png" id="3_wnlwo"]
+[ext_resource type="Texture2D" uid="uid://bjbysy7li4gfc" path="res://Treasure Hunters/Pirate Treasure/Sprites/Gold Coin/04.png" id="4_jig8b"]
+[ext_resource type="AudioStream" uid="uid://bl75vjtg2b2w7" path="res://Treasure Hunters/retro-coin-4-236671.mp3" id="6_wnlwo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmuha"]
+atlas = ExtResource("1_d14el")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfxoj"]
+atlas = ExtResource("2_1ikuy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsmju"]
+atlas = ExtResource("3_wnlwo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0mny"]
+atlas = ExtResource("4_jig8b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cc30"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmuha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfxoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsmju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0mny")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rojmm"]
+radius = 6.0
+
+[node name="Coin" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_1ikuy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7cc30")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_rojmm")
+
+[node name="CoinTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_wnlwo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]
